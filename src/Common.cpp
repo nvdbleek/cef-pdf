@@ -11,6 +11,7 @@
 #include <random>
 #include <sstream>
 #include <iomanip>
+#include <ctime>
 
 #if !defined(OS_WIN)
 #include <sys/types.h> // pid_t
@@ -378,9 +379,9 @@ bool deleteTempFile(const std::string& path)
 std::string formatDate(const char* format, std::time_t* arg)
 {
     std::time_t t = std::time(arg);
-    std::ostringstream buffer;
-    buffer << std::put_time(std::gmtime(&t), format);
-    return buffer.str();
+    char szOut[255];
+    auto size = std::strftime(szOut, 255, format, std::gmtime(&t));
+    return std::string(szOut, size);
 }
 
 bool stringsEqual(const std::string& a, const std::string& b)
