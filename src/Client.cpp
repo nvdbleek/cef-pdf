@@ -31,6 +31,7 @@ Client::Client() :
     m_settings.no_sandbox = true;
     m_settings.windowless_rendering_enabled = true;
     m_settings.command_line_args_disabled = true;
+    m_settings.log_severity = LOGSEVERITY_VERBOSE;
 
     m_windowInfo.windowless_rendering_enabled = true;
 
